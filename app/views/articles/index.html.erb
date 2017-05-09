@@ -5,7 +5,7 @@
 <% @articles.each do |article| %>
 <h4><%= article.created_at.to_s(:published_on) %></h4>
 <h3><%= article.body %></h3>
-<%= link_to "削除", article_path(article.id), method: :delete %>
-<%= link_to "詳細", article_path(article.id) %>
+<%= link_to "削除する", article_path(article.id), method: :delete %>
+<%= link_to "詳細をみる", article_path(article.id) %>
 <hr>
 <% end %>
