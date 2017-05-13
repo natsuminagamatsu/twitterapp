@@ -1,5 +1,4 @@
 <%= form_for @article do |f| %>
-  <label>今どうしてる?</label><br/>
-  <%= f.text_area :body, size: "60x12" %><br/>
+  <%= f.text_area :body, size: "60x12", placeholder:"今なにしてる？" %><br/>
   <%= f.submit "つぶやく" %><br/>
 <% end %>

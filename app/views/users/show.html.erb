@@ -1,0 +1,20 @@
+<h3>📁<%= @user.name %>さんのプロフィール</h3><%# 他人から見たプロフィール %>
+<hr>
+<h5>自己紹介</h5>
+<%= @user.bio %>
+<h5>誕生日</h5>
+<%= @user.birthday %>
+<h5>場所</h5>
+<%= @user.place %>
+<h5>WEBサイト</h5>
+<%= @user.weburl %>
+
+<h3>✏️投稿</h3>
+<hr>
+<% @user.articles.each do |article| %>
+<h5><%= article.created_at.to_s(:published_on) %></h5>
+<h3><%= article.body %></h3>
+<hr>
+<% end %>
+
+<%= link_to "トップへ戻る", root_path %>

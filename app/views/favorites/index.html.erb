@@ -1,0 +1,8 @@
+<h1>お気に入り一覧</h1>
+<hr>
+
+<% @current_user.favorites.each do |fav| %>
+<%= fav.article.created_at.to_s(:published_on) %></br>
+<%= fav.article.body %>
+<hr>
+<% end %>

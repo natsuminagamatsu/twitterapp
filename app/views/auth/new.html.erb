@@ -1,0 +1,14 @@
+<h1>ログインしてください</h1>
+<% @error_messages.each do |msg| %>
+  <%= msg %>
+<% end %>
+
+<%= form_for @auth, url: auth_path do |f| %>
+  <label>メールアドレス</label></br>
+  <%= f.text_field :email %><br/>
+
+  <label>パスワード</label></br>
+  <%= f.password_field :password %><br/>
+
+  <%= f.submit "ログイン" %><br/>
+<% end %>

@@ -1,3 +1,19 @@
 <h1>ツイート詳細</h1>
+<hr>
 
-<p><%= @article.body %></p>
+<h3><%= @article.body %></h3>
+<%= link_to "コメントする", new_article_comment_path(@article.id) %>
+<hr>
+
+<h4>みんなのコメント</h4>
+<% @article.comments.each do |comment| %>
+<p><%= comment.created_at.to_s(:published_on) %></p>
+<p><%= comment.user.name %></p>
+<p><%= comment.body %></p>
+  <% if session.has_key? :user_id %>
+    <%= link_to "削除", article_comment_path(@article.id, comment.id), method: :delete %>
+    <hr>
+  <% end %>
+<% end %>
+
+<%= link_to "トップへ戻る", root_path %>

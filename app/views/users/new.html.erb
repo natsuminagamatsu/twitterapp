@@ -1,0 +1,12 @@
+<%= form_for @user do |f| %>
+  <label>名前</label></br>
+  <%= f.text_field :name %><br/>
+
+  <label>メールアドレス</label></br>
+  <%= f.text_field :email %><br/>
+
+  <label>パスワード</label></br>
+  <%= f.password_field :password %><br/>
+
+  <%= f.submit "新規登録する" %><br/>
+<% end %>

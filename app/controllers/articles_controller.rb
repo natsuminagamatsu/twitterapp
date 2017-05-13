@@ -8,14 +8,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    Article.new(body: params[:article][:body]).save
-    #redirect_to action: "index"
-    #redirect_to :action => "index"
+    article = @current_user.articles.build(body: params[:article][:body])
+    article.save
     redirect_to articles_url
   end
 
   def destroy
-    Article.find(params[:id]).delete
+    Article.find(params[:id]).destroy
     redirect_to articles_url
   end
 

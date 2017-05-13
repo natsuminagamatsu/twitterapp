@@ -9,6 +9,22 @@
   </head>
 
   <body>
+    <div id="header">
+      <h1>🐳みんなのTweet🐳</h1>
+      <% if session.has_key? :user_id %>
+        <p><%= @current_user.name %>さんでログイン中</p>
+        <%= link_to "新規投稿", new_article_path %>
+        <%= link_to "プロフィール", profile_path %>
+        <%= link_to "ログアウト", auth_path(@current_user.id), method: :delete %>
+
+        <hr>
+      <% else %>
+        <%= link_to "新規登録", new_user_path %>
+        <%= link_to "ログイン", new_auth_path %>
+      <hr>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>

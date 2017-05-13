@@ -1,11 +1,20 @@
-<h1>みんなのTweet</h1>
-
-<%= link_to "新規投稿", new_article_path %>
-
 <% @articles.each do |article| %>
-<h4><%= article.created_at.to_s(:published_on) %></h4>
+<h5><%= article.created_at.to_s(:published_on) %></h5>
+<% author = article.user %>
+<%= link_to author.name, user_path(author.id) %>
 <h3><%= article.body %></h3>
-<%= link_to "削除する", article_path(article.id), method: :delete %>
-<%= link_to "詳細をみる", article_path(article.id) %>
-<hr>
+  <% unless session.has_key? :user_id %>
+    <%= link_to "詳細", article_path(article.id) %>
+  <hr>
+  <% else %>
+    <% if article.user_id == @current_user.id %>
+      <%= link_to "詳細", article_path(article.id) %>
+      <%= link_to "削除", article_path(article.id), method: :delete %>
+      <hr>
+    <% else %>
+      <%= link_to "お気に入り", article_favorites_path(article.id), method: :post %>
+      <%= link_to "詳細", article_path(article.id) %>
+      <hr>
+    <% end %>
+  <% end %>
 <% end %>
