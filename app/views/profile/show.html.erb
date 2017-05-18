@@ -3,6 +3,7 @@
 <%= link_to "お気に入り", favorites_path %>
 <%= link_to "変更", edit_profile_path %>
 <%= link_to "トップへ戻る", root_path %>
+<%= link_to "ログアウト", auth_path(@current_user.id), method: :delete %>
 
 <hr>
 

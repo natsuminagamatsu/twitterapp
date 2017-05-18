@@ -1,20 +1,41 @@
-<% @articles.each do |article| %>
-<h5><%= article.created_at.to_s(:published_on) %></h5>
-<% author = article.user %>
-<%= link_to author.name, user_path(author.id) %>
-<h3><%= article.body %></h3>
-  <% unless session.has_key? :user_id %>
-    <%= link_to "詳細", article_path(article.id) %>
-  <hr>
-  <% else %>
-    <% if article.user_id == @current_user.id %>
-      <%= link_to "詳細", article_path(article.id) %>
-      <%= link_to "削除", article_path(article.id), method: :delete %>
-      <hr>
+<div class="main-container">
+  <div class="profile">
+    <% if session.has_key? :user_id %>
+      <%= @current_user.name %></br>
+      <%= @current_user.bio %>
     <% else %>
-      <%= link_to "お気に入り", article_favorites_path(article.id), method: :post %>
-      <%= link_to "詳細", article_path(article.id) %>
-      <hr>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+
+  <div class="post">
+    <div class="new-post">
+      <%= form_for @article do |f| %>
+        <%= f.text_area :body, size: "60x5", placeholder:"今どうしてる？" %><br/>
+        <%= f.submit "つぶやく" %><br/>
+      <% end %>
+    </div>
+
+    <div class="posts">
+      <% @articles.each do |article| %>
+      <h5><%= article.created_at.to_s(:published_on) %></h5>
+      <% author = article.user %>
+      <%= link_to author.name, user_path(author.id) %>
+      <h3><%= article.body %></h3>
+        <% unless session.has_key? :user_id %>
+          <%= link_to "詳細", article_path(article.id) %>
+        <hr>
+        <% else %>
+          <% if article.user_id == @current_user.id %>
+            <%= link_to "詳細", article_path(article.id) %>
+            <%= link_to "削除", article_path(article.id), method: :delete %>
+            <hr>
+          <% else %>
+            <%= link_to "お気に入り", article_favorites_path(article.id), method: :post %>
+            <%= link_to "詳細", article_path(article.id) %>
+            <hr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

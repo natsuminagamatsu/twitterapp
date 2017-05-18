@@ -9,22 +9,26 @@
   </head>
 
   <body>
-    <div id="header">
-      <h1>🐳みんなのTweet🐳</h1>
+    <header>
+        <%= link_to "ホーム", root_path, class: "home"%>
+      <div class="logo">
+        <img src="/images/twitter.png">
+      </div>
       <% if session.has_key? :user_id %>
-        <p><%= @current_user.name %>さんでログイン中</p>
-        <%= link_to "新規投稿", new_article_path %>
-        <%= link_to "プロフィール", profile_path %>
-        <%= link_to "ログアウト", auth_path(@current_user.id), method: :delete %>
-
-        <hr>
+      <div class="menu">
+        <%= link_to @current_user.name, profile_path, class: "my_profile"%>
+        <%= link_to "新しいツイート", new_article_path, class: "new_post" %>
+      </div>
       <% else %>
+      <div class="menu">
         <%= link_to "新規登録", new_user_path %>
         <%= link_to "ログイン", new_auth_path %>
-      <hr>
+        </div>
       <% end %>
-    </div>
+    </header>
 
+    <div id="container">
     <%= yield %>
+    </div>
   </body>
 </html>
