@@ -8,6 +8,10 @@
 <%= @user.place %>
 <h5>WEBサイト</h5>
 <%= @user.weburl %>
+<h5>プロフィール写真</h5>
+<% if @user.has_photo %>
+<img src="/uploads/<%= @user.id %>.jpg" width="120px"/><br/>
+<% end %>
 
 <h3>✏️投稿</h3>
 <hr>

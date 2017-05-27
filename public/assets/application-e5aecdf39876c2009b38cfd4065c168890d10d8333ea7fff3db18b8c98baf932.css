@@ -1,0 +1,61 @@
+@import "articles";
+
+body {
+  width: 100%;
+  margin: 0;
+  background-color: #EEEEEE;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  top: 0px;
+  box-shadow:0px 0px 2px #555;
+}
+
+div.logo {
+  height: 40px;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+div.menu {
+  margin-right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+a.new_post{
+  width:150px;
+  height: 30px;
+  line-height: 30px;
+  font-size:15px;
+  text-decoration:none;
+  display:block;
+  text-align:center;
+  color:#fff;
+  background-color:#49a9d4;
+  border-radius:5px;
+  margin-left: 10px;
+}
+
+a.home {
+  width: 214px;
+  margin-left: 30px;
+}
+
+div#container {
+  height: 100%;
+  padding: 60px 30px;
+}

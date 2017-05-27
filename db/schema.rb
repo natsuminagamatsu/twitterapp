@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511050942) do
+ActiveRecord::Schema.define(version: 20170518050203) do
 
   create_table "articles", force: :cascade do |t|
     t.text "body"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170511050942) do
     t.text "bio"
     t.string "place"
     t.string "weburl"
+    t.boolean "has_photo"
   end
 
 end

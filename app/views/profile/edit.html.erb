@@ -23,5 +23,12 @@
   <label>自己紹介</label><br/>
   <%= f.text_area :bio, size: "60x12" %><br/>
 
+  <label>プロフィール写真</label><br/>
+  <%= f.file_field :pictures %><br/>
+
+  <% if @current_user.has_photo %>
+  <img src="/uploads/<%= @current_user.id %>.jpg" width="120px"/><br/>
+  <% end %>
+
   <%= f.submit "変更" %><br/>
 <% end %>

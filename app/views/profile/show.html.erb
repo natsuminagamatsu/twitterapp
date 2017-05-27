@@ -15,3 +15,7 @@
 <%= @current_user.place %>
 <h5>WEBサイト</h5>
 <%= @current_user.weburl %>
+<h5>プロフィール写真</h5>
+<% if @current_user.has_photo %>
+<img src="/uploads/<%= @current_user.id %>.jpg" width="120px"/><br/>
+<% end %>

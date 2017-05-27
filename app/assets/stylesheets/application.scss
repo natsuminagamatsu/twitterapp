@@ -1,9 +1,12 @@
 @import "articles";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 body {
   width: 100%;
   margin: 0;
   background-color: #EEEEEE;
+  font-family:'游ゴシック', 'Yu Gothic', monospace, sans-serif;
 }
 
 header {
@@ -16,40 +19,67 @@ header {
   background-color: #ffffff;
   top: 0px;
   box-shadow:0px 0px 2px #555;
-}
 
-img {
-  width: 40px;
-}
+  .home {
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 150px;
 
-div.menu {
-  margin-right: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    &:hover{
+      border-bottom-style: groove;
+      color: #49a9d4;
+    }
+  }
 
-a.new_post{
-  width:150px;
-  height: 30px;
-  line-height: 30px;
-  font-size:15px;
-  text-decoration:none;
-  display:block;
-  text-align:center;
-  color:#fff;
-  background-color:#49a9d4;
-  border-radius:5px;
-  margin-left: 30px;
+  .logo {
+    height: 30px;
+  }
 
-}
+  .menu {
+    display: flex;
+    height: 30px;
+    margin-right: 150px;
+  }
 
-a.home {
-  width: 214px;
-  margin-left: 30px;
+  .new_post {
+    width:150px;
+    height: 30px;
+    line-height: 30px;
+    font-size:15px;
+    text-decoration:none;
+    display:block;
+    text-align:center;
+    color:#fff;
+    background-color:#49a9d4;
+    border-radius:5px;
+    margin-left: 10px;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+  }
 }
 
 div#container {
   height: 100%;
-  padding: 60px 30px;
+  padding: 60px 150px;
+}
+
+.no-border-top {
+  border-top: 0;
+}
+
+.message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.inner-message {
+  margin: 0 auto;
 }

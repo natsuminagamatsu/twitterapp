@@ -16,9 +16,15 @@
       </div>
       <% if session.has_key? :user_id %>
       <div class="menu">
-        <%= link_to @current_user.name, profile_path, class: "my_profile"%>
-        <%= link_to "新しいツイート", new_article_path, class: "new_post" %>
+          <% if @current_user.has_photo %>
+          <a class="my_profile" href="profile#show"><img src="/uploads/<%= @current_user.id %>.jpg" width="120px"/></a>
+          <% else %>
+          <a class="my_profile" href="profile#show"><img src="/no_photo.png" width="40px"/></a>
+          <% end %>
+        <!-- <%= link_to "新しいツイート", new_article_path, class: "new_post" %> -->
+        <a data-toggle="modal" data-target="#myModal" class="new_post">新しいツイート</a>
       </div>
+
       <% else %>
       <div class="menu">
         <%= link_to "新規登録", new_user_path %>
@@ -30,5 +36,8 @@
     <div id="container">
     <%= yield %>
     </div>
+
+    <%= render "layouts/modal" %>
+    <%= render "layouts/alerts" %>
   </body>
 </html>
