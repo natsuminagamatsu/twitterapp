@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script src="/js/jquery.loadTemplate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
   </head>
 
   <body>
@@ -20,6 +21,9 @@
 
       <% if session.has_key? :user_id %>
       <div class="menu">
+        <div class="col-xs-6">
+          <input id="search" type="text" class="form-control" placeholder="検索" />
+        </div>
         <% if @current_user.has_photo %>
         <%= render "layouts/menu" %>
         <% else %>
@@ -36,6 +40,10 @@
     </header>
 
     <div id="container">
+      <div class="col-xs-4" style="position: absolute; left: 580px; top: 50px;">
+        <ul id="search-result" class="list-group">
+        </ul>
+      </div>
     <%= yield %>
     </div>
 

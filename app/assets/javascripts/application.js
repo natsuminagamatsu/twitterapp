@@ -19,8 +19,22 @@
 document.addEventListener('turbolinks:load', function() {
   rendering_timeline();
 
-  $("#tweet-button").on("click", function(e) {
+  $("#search").on("keyup", _.debounce(function() {
+    $("#search-result").empty();
+    if ($("#search").val() !== "") {
+      $.ajax({
+        url: "/api/search/show?query=" + $("#search").val(),
+        method: "GET",
+      })
+      .done(function(json) {
+        json.forEach(function(article) {
+          $("#search-result").append('<li class="list-group-item"><a href="/articles/'+article.id+'">'+article.body+'</a></li>')
+        });
+      });
+    }
+  }, 300));
 
+  $("#tweet-button").on("click", function(e) {
     var tweet_text = $("#tweet-text").val();
 
     $.ajax({

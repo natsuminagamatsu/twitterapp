@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :favorites
     resources :articles
+    resources :search, only: [:show]
   end
 
   root to:'articles#index'
