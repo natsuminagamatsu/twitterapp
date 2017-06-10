@@ -28,9 +28,19 @@ header {
     text-decoration: none;
     margin-left: 150px;
 
-    &:hover{
+    &:after {
+      position: relative;
+      top: -3px;
+      transition: opacity .25s;
       border-bottom-style: groove;
+      content: '';
+      display: block;
+      opacity: 0;
       color: #49a9d4;
+    }
+
+    &:hover:after {
+      opacity: 1;
     }
   }
 

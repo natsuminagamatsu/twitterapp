@@ -9,25 +9,29 @@
 
   <div class="right box">
     <div class="new-post">
-      <%= form_for @article do |f| %>
-        <%= f.text_area :body, placeholder: "今どうしてる？", class: "form-control" %><br/>
-        <%= f.submit "つぶやく", class: "btn btn-primary" %><br/>
-      <% end %>
+        <%= form_for @article do |f| %>
+          <%= f.text_area :body, id: "text-box", placeholder: "今どうしてる？", class: "form-control" %><br/>
+          <%= f.submit "つぶやく", id: "button", class: "btn btn-primary" %><br/>
+        <% end %>
     </div>
 
-    <div class="posts">
+    <div id="articles" class="posts">
+    </div>
+
+    <!-- <div class="posts">
       <% @articles.each do |article| %>
-      <p><%= article.created_at.to_s(:published_on) %></p>
-      <% author = article.user %>
+      <div>
+        <p><%= article.created_at.to_s(:published_on) %></p>
+        <% author = article.user %>
 
-      <% if author.has_photo %>
-        <img class="avator" src="/uploads/<%= author.id %>.jpg" width="40px"/>
-      <% else %>
-        <img src="/no_photo.png" width="40px"/>
-      <% end %>
+        <% if author.has_photo %>
+          <img class="avator" src="/uploads/<%= author.id %>.jpg" width="40px"/>
+        <% else %>
+          <img src="/no_photo.png" width="40px"/>
+        <% end %>
 
-      <%= link_to author.name, user_path(author.id) %>
-      <p><%= article.body %></p>
+        <%= link_to author.name, user_path(author.id) %>
+        <p><%= article.body %></p>
         <% unless session.has_key? :user_id %>
           <%= link_to "詳細", article_path(article.id) %>
         <hr>
@@ -46,7 +50,8 @@
             <hr>
           <% end %>
         <% end %>
+      </div>
       <% end %>
-    </div>
+    </div> -->
   </div>
 </div>

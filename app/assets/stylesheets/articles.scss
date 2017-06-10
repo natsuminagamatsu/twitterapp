@@ -14,16 +14,29 @@ div#articles-container {
     display: flex;
     flex-direction: column;
 
-    .avator {
+    #avator {
       width: 30px;
       height: 30px;
       border-radius: 50px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .new-post {
       padding: 10px;
       background-color: #E8F5FD;
     }
+
+    #text-box {
+      height: 40px;
+    }
+
+    #button {
+      display: none;
+    }
+
     .posts {
       padding: 8px;
     }

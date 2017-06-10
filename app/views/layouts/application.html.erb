@@ -6,30 +6,32 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="/js/jquery.loadTemplate.min.js"></script>
   </head>
 
   <body>
     <header>
-        <%= link_to "ホーム", root_path, class: "home"%>
+      <%= link_to "ホーム", root_path, class: "home" %>
+
       <div class="logo">
         <img src="/images/twitter.png">
       </div>
+
       <% if session.has_key? :user_id %>
       <div class="menu">
-          <% if @current_user.has_photo %>
-          <a class="my_profile" href="profile#show"><img src="/uploads/<%= @current_user.id %>.jpg" width="120px"/></a>
-          <% else %>
-          <a class="my_profile" href="profile#show"><img src="/no_photo.png" width="40px"/></a>
-          <% end %>
-        <!-- <%= link_to "新しいツイート", new_article_path, class: "new_post" %> -->
+        <% if @current_user.has_photo %>
+        <%= render "layouts/menu" %>
+        <% else %>
+        <a class="my_profile" href="profile#show"><img src="/no_photo.png" width="40px"/></a>
+        <% end %>
         <a data-toggle="modal" data-target="#myModal" class="new_post">新しいツイート</a>
       </div>
-
       <% else %>
       <div class="menu">
         <%= link_to "新規登録", new_user_path %>
         <%= link_to "ログイン", new_auth_path %>
-        </div>
+      </div>
       <% end %>
     </header>
 

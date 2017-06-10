@@ -1,7 +1,15 @@
 document.addEventListener('turbolinks:load', function() {
-  $(".heart").on("click", function(e) {
+  //$("#avator").on("click",function(){
+  //}
+
+  $("#text-box").on("mouseup", function() {
+    $("#text-box").css('height', '80px');
+    $("#button").css('display', 'block');
+  });
+
+  $("#articles").on("click", ".heart", function(e) {
     var element = $(e.target);
-    var article_id = element.data("article-id");
+    var article_id = element.attr("id");
 
     if (element.attr("src") == "/images/red-favorite.png") {
       $.ajax({
